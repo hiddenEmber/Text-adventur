@@ -35,7 +35,7 @@ class Armor ():
 tepName = "PlaceHolder"
 tep1 = 1
 tep2 = 2
-Incombat=False
+inCombat=False
 import random
 
 def makeEquleMob():
@@ -44,7 +44,7 @@ def makeEquleMob():
 
 
 def takeStep():
-    if InCombat:
+    if inCombat:
         playerCombatChoice()
     makeEquleMob()  
 
