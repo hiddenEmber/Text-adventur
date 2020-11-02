@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Item.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Mob.py">
       <SubType>Code</SubType>
     </Compile>
