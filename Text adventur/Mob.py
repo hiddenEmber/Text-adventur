@@ -1,5 +1,4 @@
 import Item
-import itemType
 
 class Mob:
     def __init__(self, Name, level,ac):
