@@ -1,7 +1,8 @@
-import Item
+from Item import Item
+from Item import ItemType
 
 class Mob:
-    def __init__(self, name, level, ac):
+    def __init__(self, name, level):
         self.name = name
         self.gold = 0
         self.xp = 0
@@ -9,16 +10,18 @@ class Mob:
         self.hpMax = ((self.level-1)*8)+10
         self.hp = self.hpMax
         self.inventory = []
-        if ac!=None:
-            self.baseAc=ac
-        else:
-            self.baseAc=0
+        self.equipped = {}
 
-    def LevelUp(self, mobClass):
-        if mobClass.xp >= mobClass.level * 8 :
-            mobClass.xp = -(mobClass.level - 1) * 8
-            mobClass.level+=1
-            print("You are now Level " + str(mobClass.level))
+    def addXpFromMobDefeat(self, mobClass):
+        xpToAdd = mobClass.level
+        self.xp += xpToAdd
+        while self.level * 8 <= self.xp:
+            self.xp -= (self.level * 8)
+            self.level+=1
+            print("You are now Level " + str(self.level))
+
+    def calculateBaseAC(self):
+        return self.level
 
     def printInventory (self):
         if len(self.inventory) > -1:
@@ -31,7 +34,14 @@ class Mob:
     def addToInventory (self, item):
         self.inventory.append(item)
 
+    def equipItemFromInventory(self, itemId):
+        #if there is already a item in the slot put it into our inventory
+        if self.equipped[self.inventory[itemId].type] != None:
+            self.inventory.append(self.equipped[self.inventory[itemId].type])
+        #add the equipment to the now empty slot
+        self.equipped[self.inventory[itemId].type] = self.inventory[itemId]
+
     @staticmethod
-    def makeEqualMob(name):
-        hostile=Mob(name,1,2)
+    def makeEqualMob(self, name):
+        hostile=Mob(name, self.level-1)
         print("you found a level "+str(hostile.level)+" "+hostile.name+"!")

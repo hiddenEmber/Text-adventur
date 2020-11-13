@@ -15,10 +15,6 @@ print("check inv view")
 inventoryView = False
 
 
-def equipItem(equipedItem,player):
-    return False
-
-
 def playerCombatChoice():
     return False
 
@@ -26,7 +22,7 @@ def playerCombatChoice():
 def takeStep():
     if inCombat:
         playerCombatChoice()
-    Mob.makeEqualMob(tempName)  
+    player.makeEqualMob(tempName)  
 
 # This already does that just use random.randint
 #def ranNumb(Min,Max):
@@ -41,7 +37,7 @@ def playerAction():
             player.inventory[itemCheck].displayStats()
         elif action == "equip":
             equipedItem=input("what do you want to equip?")
-            equipItem(equipedItem,player)
+            player.equipItemFromInventory(equipedItem)
     else:
         if action == "step":
             takeStep()
