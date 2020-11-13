@@ -1,21 +1,37 @@
 import Item
 
 class Mob:
-    def __init__(self, Name, level,ac):
-        self.Name = Name
-        self.Gold = 0
-        self.XP = 0
-        self.Level = level
-        self.HpMax = ((self.Level-1)*8)+10
-        self.Hp = self.HpMax
-        self.Inventory = []
+    def __init__(self, name, level, ac):
+        self.name = name
+        self.gold = 0
+        self.xp = 0
+        self.level = level
+        self.hpMax = ((self.level-1)*8)+10
+        self.hp = self.hpMax
+        self.inventory = []
         if ac!=None:
             self.baseAc=ac
         else:
             self.baseAc=0
 
     def LevelUp(self, mobClass):
-        if mobClass.XP >= mobClass.Level * 8 :                        
-            mobClass.XP = -(mobClass.Level - 1) * 8
-            mobClass.Level+=1
-            print("You are now Level " + str(mobClass.Level))
+        if mobClass.xp >= mobClass.level * 8 :
+            mobClass.xp = -(mobClass.level - 1) * 8
+            mobClass.level+=1
+            print("You are now Level " + str(mobClass.level))
+
+    def printInventory (self):
+        if len(self.inventory) > -1:
+            inventoryView=True
+            print("inventoryView is"+str(inventoryView))
+            for x in range(len(self.inventory)):
+                print(x+1, ",", ".")
+                print(self.inventory[x].type)
+
+    def addToInventory (self, item):
+        self.inventory.append(item)
+
+    @staticmethod
+    def makeEqualMob(name):
+        hostile=Mob(name,1,2)
+        print("you found a level "+str(hostile.level)+" "+hostile.name+"!")
