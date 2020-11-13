@@ -14,7 +14,6 @@ inCombat=False
 print("check inv view")
 inventoryView = False
 
-
 def playerCombatChoice():
     return False
 
@@ -29,7 +28,7 @@ def takeStep():
 #    return random.randint(Min,Max)
 
 #Asks the play what they wants to do then sents them on the appropret path
-def playerAction():
+def playerAction(inventoryView):
     action = input("What would you like to do?")
     if inventoryView:
         if action == "stats":
@@ -42,12 +41,14 @@ def playerAction():
         if action == "step":
             takeStep()
         elif action == "look":
+            
             player.addToInventory(Item.createItem(True,player))
         elif action == "check Inv":
+            inventoryView = True
             player.printInventory()
 
 
 #makes the player and while the player has positive HP asks the player what they want to do
-player = Player(tempName,temp1,None)
+player = Player(tempName,temp1)
 while player.hp > 1:
-    playerAction()
+    playerAction(inventoryView)

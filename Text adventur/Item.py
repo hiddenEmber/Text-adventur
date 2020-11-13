@@ -14,6 +14,8 @@ class Item ():
             item=Item("sword",0,1)
         print("a "+str(item.ac)+" ac "+str(item.damage)+" damage "+str(item.type)+" was created")
 
+        return item
+
     def displayStats(self):
         print(str(self.type)+"\n"+"AC= "+str(self.ac)+"\n"+"damage= "+str(self.damage))
 

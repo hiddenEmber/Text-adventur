@@ -24,12 +24,9 @@ class Mob:
         return self.level
 
     def printInventory (self):
-        if len(self.inventory) > -1:
-            inventoryView=True
-            print("inventoryView is"+str(inventoryView))
-            for x in range(len(self.inventory)):
-                print(x+1, ",", ".")
-                print(self.inventory[x].type)
+        for x in range(len(self.inventory)):
+            print(x+1, ",", ".")
+            print(self.inventory[x].type)
 
     def addToInventory (self, item):
         self.inventory.append(item)
