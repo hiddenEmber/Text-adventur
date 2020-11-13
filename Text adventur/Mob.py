@@ -8,13 +8,13 @@ class Mob:
         self.Level = level
         self.HpMax = ((self.Level-1)*8)+10
         self.Hp = self.HpMax
-        self.Ivitory = []
+        self.Inventory = []
         if ac!=None:
             self.baseAc=ac
         else:
             self.baseAc=0
 
-    def LevelUp(mobClass):
+    def LevelUp(self, mobClass):
         if mobClass.XP >= mobClass.Level * 8 :                        
             mobClass.XP = -(mobClass.Level - 1) * 8
             mobClass.Level+=1
